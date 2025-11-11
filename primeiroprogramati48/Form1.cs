@@ -10,11 +10,41 @@ using System.Windows.Forms;
 
 namespace primeiroprogramati48
 {
-    public partial class Form1 : Form
+    public partial class Qual : Form
     {
-        public Form1()
+        public Qual()
         {
             InitializeComponent();
+        }
+
+        private void button_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+            titulo.Text = "Olá turma";
+        }
+
+        private void titulo_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
