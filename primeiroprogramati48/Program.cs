@@ -16,7 +16,7 @@ namespace primeiroprogramati48
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Qual());
+            Application.Run(new Form1());
         }
     }
 }
