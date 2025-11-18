@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Windows.Forms;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -6,10 +7,13 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows.Forms;
+using System.Threading.Tasks;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
-namespace primeiroprogramati48
+
+
+
+namespace primeiroprojetoti48
 {
     public partial class Form1 : Form
     {
@@ -17,115 +21,128 @@ namespace primeiroprogramati48
         {
             InitializeComponent();
         }
-        decimal resultado;
-        decimal valor1;
-        decimal valor2;
-        string operacao;    
-        public void Form1_Load(object sender, EventArgs e)
+
+        decimal valor1, valor2, resultado;
+        string operacao = "";
+
+        private void Form1_Load(object sender, EventArgs e)
         {
-            resultado = 0;
             valor1 = 0;
             valor2 = 0;
-            operacao = "Adição";
+            resultado = 0;
         }
 
+        // -------------------------- NÚMEROS --------------------------
 
-        private void label2_Click(object sender, EventArgs e)
-        {
+        private void btn0_Click(object sender, EventArgs e) => txtDisplay.Text += "0";
+        private void btn1_Click(object sender, EventArgs e) => txtDisplay.Text += "1";
+        private void btn2_Click(object sender, EventArgs e) => txtDisplay.Text += "2";
+        private void btn3_Click(object sender, EventArgs e) => txtDisplay.Text += "3";
+        private void btn4_Click(object sender, EventArgs e) => txtDisplay.Text += "4";
+        private void btn5_Click(object sender, EventArgs e) => txtDisplay.Text += "5";
+        private void btn6_Click(object sender, EventArgs e) => txtDisplay.Text += "6";
+        private void btn7_Click(object sender, EventArgs e) => txtDisplay.Text += "7";
+        private void btn8_Click(object sender, EventArgs e) => txtDisplay.Text += "8";
+        private void btn9_Click(object sender, EventArgs e) => txtDisplay.Text += "9";
 
+        private void btnPonto_Click(object sender, EventArgs e)
+        {
+            if (!txtDisplay.Text.Contains(","))
+                txtDisplay.Text += ",";
         }
 
-        private void label4_Click(object sender, EventArgs e)
-        {
+        // -------------------------- OPERADORES --------------------------
 
-        }
-
-        private void label3_Click(object sender, EventArgs e)
+        private void btnMais_Click(object sender, EventArgs e)
         {
-
-        }
-
-        private void labelval1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-        //-----------------------FUNÇÕES DOS BOTÕES!----------------------------//
-        private void but1_Click(object sender, EventArgs e)//1
-        {
-            labelval1.Text += but1.Text;
-        }
-        private void but2_Click(object sender, EventArgs e)//2
-        {
-            labelval1.Text += but2.Text;
-        }
-        private void but3_Click(object sender, EventArgs e)//3
-        {
-            labelval1.Text += but3.Text;
-        }
-        private void but4_Click(object sender, EventArgs e)//4
-        {
-            labelval1.Text += but4.Text;
-        }
-        private void but5_Click(object sender, EventArgs e)//5
-        {
-            labelval1.Text += but5.Text;
-        }
-        private void but6_Click(object sender, EventArgs e)//6
-        {
-            labelval1.Text += but6.Text;
-        }
-        private void but7_Click(object sender, EventArgs e)//7
-        {
-            labelval1.Text += but7.Text;
-        }
-        private void but8_Click(object sender, EventArgs e)//8
-        {
-            labelval1.Text += but8.Text;
-        }
-        private void but9_Click(object sender, EventArgs e)//9
-        {
-            labelval1.Text += but9.Text;
-        }
-        private void but0_Click(object sender, EventArgs e)//0
-        {
-            labelval1.Text += but0.Text;
-        }
-        //-------------------------Códigos DE SINAL-----------------------------//
-
-        private void btmsoma_Click(object sender, EventArgs e)//soma
-        {
+            if (txtDisplay.Text == "") return;
             operacao = "Adicao";
+            valor1 = decimal.Parse(txtDisplay.Text);
+            txtResultado.Text = valor1 + " + ";
+            txtDisplay.Clear();
+        }
 
-            if (operacao == "Adicao")
+        private void btnMenos_Click(object sender, EventArgs e)
+        {
+            if (txtDisplay.Text == "") return;
+            operacao = "Subtracao";
+            valor1 = decimal.Parse(txtDisplay.Text);
+            txtResultado.Text = valor1 + " - ";
+            txtDisplay.Clear();
+        }
+
+        private void btnMultiplicar_Click(object sender, EventArgs e)
+        {
+            if (txtDisplay.Text == "") return;
+            operacao = "Multiplicacao";
+            valor1 = decimal.Parse(txtDisplay.Text);
+            txtResultado.Text = valor1 + " * ";
+            txtDisplay.Clear();
+        }
+
+        private void btnDividir_Click(object sender, EventArgs e)
+        {
+            if (txtDisplay.Text == "") return;
+            operacao = "Divisao";
+            valor1 = decimal.Parse(txtDisplay.Text);
+            txtResultado.Text = valor1 + " / ";
+            txtDisplay.Clear();
+        }
+
+        // -------------------------- IGUAL --------------------------
+
+        private void btnIgual_Click(object sender, EventArgs e)
+        {
+            if (txtDisplay.Text == "") return;
+
+            valor2 = decimal.Parse(txtDisplay.Text);
+
+            switch (operacao)
+            {
+                case "Adicao":
+                    resultado = valor1 + valor2;
+                    txtResultado.Text = $"{valor1} + {valor2} =";
+                    break;
+
+                case "Subtracao":
+                    resultado = valor1 - valor2;
+                    txtResultado.Text = $"{valor1} - {valor2} =";
+                    break;
+
+                case "Multiplicacao":
+                    resultado = valor1 * valor2;
+                    txtResultado.Text = $"{valor1} * {valor2} =";
+                    break;
+
+                case "Divisao":
+                    if (valor2 == 0)
                     {
-            labeval3.Text = valor1.ToString() + " + ";
+                        txtDisplay.Text = "ERRO";
+                        return;
+                    }
+                    resultado = valor1 / valor2;
+                    txtResultado.Text = $"{valor1} / {valor2} =";
+                    break;
             }
 
+            txtDisplay.Text = resultado.ToString();
         }
 
-        private void btnmenos_Click(object sender, EventArgs e)//menos
-        {
-            labelval1.Text += btnmenos.Text;
-        }
+        // -------------------------- CLEAR --------------------------
 
-        private void btnvezes_Click(object sender, EventArgs e)//vezes
+        private void btnClear_Click(object sender, EventArgs e)
         {
-            labelval1.Text += btnvezes.Text;
+            operacao = "";
+            valor1 = 0;
+            valor2 = 0;
+            resultado = 0;
+            txtDisplay.Clear();
+            txtResultado.Clear();
         }
-
-        private void btndivisão_Click(object sender, EventArgs e)//divisao
-        {
-            labelval1.Text += btndivisão.Text;
-        }
-        private void igual_Click(object sender, EventArgs e)
+        // ------------------------- MaisMenos -----------------------
+        private void btnMaisMenos_Click(object sender, EventArgs e)
         {
             
         }
-        // Fim botão sinais
-
-        private void labeval3_TextChanged(object sender, EventArgs e)
-        {
-        }
-
     }
 }
